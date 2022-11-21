@@ -10,8 +10,8 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Prediction from "./pages/Prediction";
 
-// import AuthVerify from "./common/auth-verify";
-// import EventBus from "./common/EventBus";
+import AuthVerify from "./helpers/auth-verify";
+import EventBus from "./helpers/EventBus";
 
 class App extends Component {
   constructor(props) {
@@ -26,21 +26,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // const user = AuthService.getCurrentUser();
-
-    // if (user) {
-    //   this.setState({
-    //     currentUser: user
-    //   });
-    // }
+    const user = AuthService.getCurrentUser();
+    debugger
+    if (user) {
+      this.setState({
+        currentUser: user
+      });
+    }
     
-    // EventBus.on("logout", () => {
-    //   this.logOut();
-    // });
+    EventBus.on("logout", () => {
+      this.logOut();
+    });
   }
 
   componentWillUnmount() {
-    // EventBus.remove("logout");
+    EventBus.remove("logout");
   }
 
   logOut() {
@@ -67,6 +67,12 @@ class App extends Component {
                 Home
               </Link>
             </li>
+            {currentUser && (
+            <li className="nav-item">
+              <Link to={"/prediction"} className="nav-link">
+                Prediction
+              </Link>
+            </li>)}
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -84,13 +90,13 @@ class App extends Component {
               </li>
             )}
 
-            {currentUser && (
+            {/* {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
               </li>
-            )}
+            )} */}
           </div>
 
           {currentUser ? (
@@ -138,7 +144,7 @@ class App extends Component {
           </Routes>
         </div>
 
-        {/* <AuthVerify logOut={this.logOut}/> */}
+        <AuthVerify logOut={this.logOut}/>
       </div>
     );
   }
