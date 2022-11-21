@@ -59,7 +59,7 @@ class Login extends Component {
         (response) => {
           debugger;
           this.props.router.navigate("/prediction");
-          // window.location.reload();
+          window.location.reload();
         },
         error => {
           const resMessage =
