@@ -16,11 +16,6 @@ class AuthService {
     return axios
       .post(API_URL + "login",{},{ headers: headers})
       .then(response => {
-        debugger
-        console.log(response)
-        console.log(response.headers);
-        console.log(response.headers["token"]);
-        debugger
         if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
@@ -30,6 +25,8 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
+    this.props.router.navigate("/home");
+    window.location.reload();
   }
 
   register(email, firstname, lastname, teamname, password) {
