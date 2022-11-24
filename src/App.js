@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Prediction from "./pages/Prediction";
+import LeaderBoard from "./pages/LeaderBoard";
 
 import AuthVerify from "./helpers/auth-verify";
 import EventBus from "./helpers/EventBus";
@@ -27,7 +28,6 @@ class App extends Component {
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
-    debugger
     if (user) {
       this.setState({
         currentUser: user
@@ -50,6 +50,8 @@ class App extends Component {
       showAdminBoard: false,
       currentUser: undefined,
     });
+    // this.props.router.navigate("/home");
+    // window.location.reload();
   }
 
   render() {
@@ -73,6 +75,13 @@ class App extends Component {
                 Prediction
               </Link>
             </li>)}
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/leaderBoard"} className="nav-link">
+                  Leader Board
+                </Link>
+              </li>
+            )}
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -136,6 +145,8 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/prediction" element={<Prediction />} />
+            <Route path="/leaderBoard" element={<LeaderBoard />} />
+            
             
             {/* <Route path="/profile" element={<Profile />} />
             <Route path="/user" element={<BoardUser />} />

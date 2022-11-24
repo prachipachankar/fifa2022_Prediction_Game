@@ -25,8 +25,6 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
-    this.props.router.navigate("/home");
-    window.location.reload();
   }
 
   register(email, firstname, lastname, teamname, password) {
@@ -40,7 +38,6 @@ class AuthService {
   }
 
   getCurrentUser() {
-    debugger;
     return JSON.parse(localStorage.getItem('user'));;
   }
 }

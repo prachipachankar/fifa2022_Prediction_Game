@@ -16,7 +16,6 @@ const AuthVerify = (props) => {
 
     if (user) {
       const decodedJwt = parseJwt(user.token);
-      debugger
       if (decodedJwt.exp * 1000 < Date.now()) {
         props.logOut();
       }
