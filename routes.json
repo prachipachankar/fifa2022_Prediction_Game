@@ -1,0 +1,45 @@
+{
+    "routes": [
+      {
+        "route": "/example",
+        "rewrite": "/example.html"
+        
+      },
+      {
+        "route": "/home",
+        "rewrite": "/home.html"
+        
+      },
+      {
+        "route": "/login",
+        "rewrite": "/login.html"
+        
+      },
+      {
+        "route": "/register",
+        "rewrite": "/register.html"
+        
+      },
+      {
+        "route": "/prediction",
+        "rewrite": "/prediction.html"
+        
+      },
+      {
+        "route": "/leaderBoard",
+        "rewrite": "/leaderBoard.html"
+        
+      }
+    ],
+    "navigationFallback": {
+      "rewrite": "index.html",
+      "exclude": [".well-known/*", "css/*"]
+    },
+    "globalHeaders": {
+      "Content-Security-Policy": "default-src https: 'unsafe-eval' 'unsafe-inline' cdn.jsdelivr.net *.mapy.cz",
+      "Feature-Policy": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'",
+      "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+      "X-Frame-Options": "deny"
+    }
+  }
+  
